@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 7.1.11/21010
 // Filename: ASSAM BED ROOM SECOND FLOOR.ggsk
-// Generated 2026-04-06T01:47:58
+// Generated 2026-04-06T04:13:25
 
 function pano2vrSkin(player,base) {
 	player.addVariable('opt_prev_next', 2, true, { ignoreInState: 1  });
@@ -130,7 +130,8 @@ function pano2vrSkin(player,base) {
 		me._variable_resp_phone.logicBlock = function() {
 			var newLogicState_resp_phone;
 			if (
-				((player.getViewerSize(true).width <= 1024))
+				((player.getViewerSize(true).width <= 1024)) && 
+				((player.getHasTouch() == true))
 			)
 			{
 				newLogicState_resp_phone = 0;
@@ -206,9 +207,7 @@ function pano2vrSkin(player,base) {
 		me._controller.logicBlock_visible = function() {
 			var newLogicStateVisible;
 			if (
-				((player.getVariableValue('resp_phone') == false)) && 
-				((player.getHasTouch() == false)) && 
-				((player.getOS() != 6))
+				((player.getVariableValue('resp_phone') == false))
 			)
 			{
 				newLogicStateVisible = 0;
@@ -3580,6 +3579,7 @@ function pano2vrSkin(player,base) {
 					hotspotTemplates['ht_node'][i].ggEvent_configloaded();
 				}
 			}
+			me._variable_resp_phone.logicBlock();
 			if (player.transitionsDisabled) {
 				me._container_controls.style.transition='none';
 			} else {
@@ -3599,7 +3599,7 @@ function pano2vrSkin(player,base) {
 			me._floorplan01.ggInitMapMarkers(true);
 		});
 		player.addListener('hastouch', function(event) {
-			me._controller.logicBlock_visible();
+			me._variable_resp_phone.logicBlock();
 			me._thumbnail_menu.logicBlock_position();
 		});
 		player.addListener('positionchanged', function(event) {
