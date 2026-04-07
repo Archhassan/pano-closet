@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 7.1.11/21010
 // Filename: ASSAM BED ROOM SECOND FLOOR.ggsk
-// Generated 2026-04-07T11:38:01
+// Generated 2026-04-07T11:41:27
 
 function pano2vrSkin(player,base) {
 	player.addVariable('opt_prev_next', 2, true, { ignoreInState: 1  });
@@ -4606,7 +4606,7 @@ function pano2vrSkin(player,base) {
 		els.setAttribute('style',hs);
 		me._text_3.ggUpdateText=function() {
 			var params = [];
-			var hs = player._("\u0627\u0636\u063a\u0637  \u0644\u0644\u0627\u0646\u062a\u0642\u0627\u0644 \u0627\u0644\u064a\u062f\u0648\u064a", params);
+			var hs = player._("\u0627\u0636\u063a\u0637 \u0644\u0644\u062f\u0648\u0631\u0627\u0646 \u0627\u0644\u064a\u062f\u0648\u064a", params);
 			if (hs!=this.ggText) {
 				this.ggText=hs;
 				this.ggTextDiv.innerHTML=hs;
