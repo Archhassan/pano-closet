@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 7.1.11/21010
 // Filename: ASSAM BED ROOM SECOND FLOOR.ggsk
-// Generated 2026-04-07T11:33:42
+// Generated 2026-04-07T11:38:01
 
 function pano2vrSkin(player,base) {
 	player.addVariable('opt_prev_next', 2, true, { ignoreInState: 1  });
@@ -2896,6 +2896,35 @@ function pano2vrSkin(player,base) {
 		el.ggElementNodeId=function() {
 			return player.getCurrentNode();
 		}
+		me._text_2.logicBlock_scaling = function() {
+			var newLogicStateScaling;
+			if (
+				((player.getIsMobile() == false))
+			)
+			{
+				newLogicStateScaling = 0;
+			}
+			else {
+				newLogicStateScaling = -1;
+			}
+			if (me._text_2.ggCurrentLogicStateScaling != newLogicStateScaling) {
+				me._text_2.ggCurrentLogicStateScaling = newLogicStateScaling;
+				me._text_2.style.transition='transform 0s';
+				if (me._text_2.ggCurrentLogicStateScaling == 0) {
+					me._text_2.ggParameter.sx = 1;
+					me._text_2.ggParameter.sy = 1;
+					me._text_2.style.transform=parameterToTransform(me._text_2.ggParameter);
+					skin.updateSize(me._text_2);
+				}
+				else {
+					me._text_2.ggParameter.sx = 1;
+					me._text_2.ggParameter.sy = 1;
+					me._text_2.style.transform=parameterToTransform(me._text_2.ggParameter);
+					skin.updateSize(me._text_2);
+				}
+			}
+		}
+		me._text_2.logicBlock_scaling();
 		me._text_2.logicBlock_text = function() {
 			var newLogicStateText;
 			if (
@@ -2910,7 +2939,7 @@ function pano2vrSkin(player,base) {
 			}
 			if (me._text_2.ggCurrentLogicStateText != newLogicStateText) {
 				me._text_2.ggCurrentLogicStateText = newLogicStateText;
-				me._text_2.style.transition='';
+				me._text_2.style.transition='transform 0s';
 				if (me._text_2.ggCurrentLogicStateText == 0) {
 					if (me._text_2.ggUpdateText) {
 					me._text_2.ggUpdateText=function() {
@@ -3399,6 +3428,7 @@ function pano2vrSkin(player,base) {
 		me.elementMouseOver['unmute']=false;
 		me.elementMouseOver['mute']=false;
 		me._thumbnail_menu.logicBlock_position();
+		me._text_2.logicBlock_scaling();
 		me._text_2.logicBlock_text();
 		me._floorplan01.ggMarkerInstances=[];
 		me._floorplan01.ggLastNodeId=null;
@@ -3698,6 +3728,7 @@ function pano2vrSkin(player,base) {
 			me._phone_previous_.logicBlock_visible();
 			me._thumbnail_menu.ggUpdatePosition();
 			me._thumbnail_menu.logicBlock_position();
+			me._text_2.logicBlock_scaling();
 			me._floorplan01.ggClearMap();
 			me._floorplan01.ggInitMap(false);
 			me._floorplan01.ggInitMapMarkers(true);
