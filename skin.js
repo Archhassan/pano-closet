@@ -1,7 +1,7 @@
 // Garden Gnome Software - Skin
 // Pano2VR 7.1.11/21010
 // Filename: ASSAM BED ROOM SECOND FLOOR.ggsk
-// Generated 2026-04-07T11:41:27
+// Generated 2026-04-07T11:46:51
 
 function pano2vrSkin(player,base) {
 	player.addVariable('opt_prev_next', 2, true, { ignoreInState: 1  });
@@ -3084,6 +3084,35 @@ function pano2vrSkin(player,base) {
 		el.ggElementNodeId=function() {
 			return player.getCurrentNode();
 		}
+		me._rectangle_1.logicBlock_scaling = function() {
+			var newLogicStateScaling;
+			if (
+				((player.getIsMobile() == false))
+			)
+			{
+				newLogicStateScaling = 0;
+			}
+			else {
+				newLogicStateScaling = -1;
+			}
+			if (me._rectangle_1.ggCurrentLogicStateScaling != newLogicStateScaling) {
+				me._rectangle_1.ggCurrentLogicStateScaling = newLogicStateScaling;
+				me._rectangle_1.style.transition='transform 0s';
+				if (me._rectangle_1.ggCurrentLogicStateScaling == 0) {
+					me._rectangle_1.ggParameter.sx = 1;
+					me._rectangle_1.ggParameter.sy = 1;
+					me._rectangle_1.style.transform=parameterToTransform(me._rectangle_1.ggParameter);
+					skin.updateSize(me._rectangle_1);
+				}
+				else {
+					me._rectangle_1.ggParameter.sx = 1;
+					me._rectangle_1.ggParameter.sy = 1;
+					me._rectangle_1.style.transform=parameterToTransform(me._rectangle_1.ggParameter);
+					skin.updateSize(me._rectangle_1);
+				}
+			}
+		}
+		me._rectangle_1.logicBlock_scaling();
 		me._rectangle_1.onclick=function (e) {
 			me._floorplan01.ggVisible = !me._floorplan01.ggVisible;
 			var flag=me._floorplan01.ggVisible;
@@ -3631,6 +3660,7 @@ function pano2vrSkin(player,base) {
 			me._floorplan01.ggMarkerInstances=[];
 			me._floorplan01.ggSimpleFloorplanMarkerArray=[];
 		}
+		me._rectangle_1.logicBlock_scaling();
 		me._stop_rotate_image.logicBlock_visible();
 		me.elementMouseOver['stop_rotate_image']=false;
 		me._start_rotate_image.logicBlock_visible();
@@ -3732,6 +3762,7 @@ function pano2vrSkin(player,base) {
 			me._floorplan01.ggClearMap();
 			me._floorplan01.ggInitMap(false);
 			me._floorplan01.ggInitMapMarkers(true);
+			me._rectangle_1.logicBlock_scaling();
 		});
 		player.addListener('hastouch', function(event) {
 			me._variable_resp_phone.logicBlock();
